@@ -339,6 +339,9 @@ void rasterizeInitGLContext(NVDR_CTX_ARGS, RasterizeGLState& s, int cudaDeviceId
     NVDR_CHECK_GL_ERROR(glDepthFunc(GL_LESS));
     NVDR_CHECK_GL_ERROR(glClearDepth(1.0));
 
+    // Set up backface culling.
+    NVDR_CHECK_GL_ERROR(glEnable(GL_CULL_FACE));
+
     // Create and bind output buffers. Storage is allocated later.
     NVDR_CHECK_GL_ERROR(glGenTextures(num_outputs, s.glColorBuffer));
     for (int i=0; i < num_outputs; i++)

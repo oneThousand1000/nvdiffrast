@@ -93,7 +93,7 @@ std::tuple<torch::Tensor, torch::Tensor> rasterize_fwd_cuda(RasterizeCRStateWrap
 
     // Enable depth peeling?
     bool enablePeel = (peeling_idx > 0);
-    cr->setRenderModeFlags(enablePeel ? CR::CudaRaster::RenderModeFlag_EnableDepthPeeling : 0); // No backface culling.
+    cr->setRenderModeFlags(enablePeel ? CR::CudaRaster::RenderModeFlag_EnableDepthPeeling : CR::CudaRaster::RenderModeFlag_EnableBackfaceCulling); // enable backface culling.
     if (enablePeel)
         cr->swapDepthAndPeel(); // Use previous depth buffer as peeling depth input.
 

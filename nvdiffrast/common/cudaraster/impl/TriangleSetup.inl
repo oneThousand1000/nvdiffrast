@@ -7,7 +7,6 @@
 // license agreement from NVIDIA CORPORATION is strictly prohibited.
 
 //------------------------------------------------------------------------
-
 __device__ __inline__ void snapTriangle(
     const CRParams& p,
     float4 v0, float4 v1, float4 v2,
@@ -53,7 +52,8 @@ __device__ __inline__ bool prepareTriangle(
     if (area == 0)
         return false; // Degenerate.
 
-    if (area < 0 && (p.renderModeFlags & CudaRaster::RenderModeFlag_EnableBackfaceCulling) != 0)
+    // if (area < 0 && (p.renderModeFlags & CudaRaster::RenderModeFlag_EnableBackfaceCulling) != 0)  // OpenGL considers counter-clockwise winding to indicate a front face
+    if (area > 0 && (p.renderModeFlags & CudaRaster::RenderModeFlag_EnableBackfaceCulling) != 0)  // switch the sign of area to use clockwise winding to indicate a front face
         return false; // Backfacing.
 
     // AABB falls between samples => cull.

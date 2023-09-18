@@ -341,6 +341,7 @@ void rasterizeInitGLContext(NVDR_CTX_ARGS, RasterizeGLState& s, int cudaDeviceId
 
     // Set up backface culling.
     NVDR_CHECK_GL_ERROR(glEnable(GL_CULL_FACE));
+    NVDR_CHECK_GL_ERROR(glFrontFace(GL_CW));
 
     // Create and bind output buffers. Storage is allocated later.
     NVDR_CHECK_GL_ERROR(glGenTextures(num_outputs, s.glColorBuffer));

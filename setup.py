@@ -14,7 +14,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="nvdiffrast",
+    name="nvdiffrast_backface_culling",
     version=nvdiffrast.__version__,
     author="Samuli Laine",
     author_email="slaine@nvidia.com",

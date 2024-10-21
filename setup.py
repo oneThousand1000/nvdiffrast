@@ -24,7 +24,7 @@ setuptools.setup(
     url="https://github.com/NVlabs/nvdiffrast",
     packages=setuptools.find_packages(),
     package_data={
-        'nvdiffrast': [
+        'nvdiffrast_backface_culling': [
             'common/*.h',
             'common/*.inl',
             'common/*.cu',
